@@ -13,7 +13,9 @@
                 <div class="row install-checkbox-container">
                     <div class="col-xs-12">
                         <label class="checkbox-inline">
-                            <input class="install-checkbox" type="checkbox" name="mariadb[install]"
+                            <input type="checkbox" class="install-checkbox update-other-input"
+                                   name="mariadb[install]"
+                                   data-update-mysql[install]
                                    data-hide-on-uncheck="#mariadb-config-container"
                                    {% if mariadb.install %}checked{% endif %} value="1" /> Install MariaDB
                         </label>
@@ -53,19 +55,7 @@
                         </div>
 
                         <div class="row form-group">
-                            <div class="col-md-6">
-                                <label for="mariadb-phpmyadmin">
-                                    phpMyAdmin
-                                    {{ popover.small('If installed it will be available from
-                                        <code>http://{SERVER_IP_ADDRESS}/phpmyadmin</code>.') }}
-                                </label><br />
-                                <label class="checkbox-inline">
-                                    <input type="checkbox" id="mariadb-phpmyadmin" name="mariadb[phpmyadmin]"
-                                           {% if mariadb.phpmyadmin %}checked{% endif %} value="1" /> Install phpMyAdmin
-                                </label>
-                            </div>
-
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <label for="mariadb-adminer">
                                     Adminer
                                     {{ popover.small('If installed it will be available from
@@ -77,6 +67,19 @@
                                 </label>
                             </div>
                         </div>
+
+                        <p class="help-block">
+                            The preferred way to connect to your database is using a dedicated application like
+                            <a href="http://www.sequelpro.com/" target="_blank">Sequel Pro (OS X)</a>,
+                            <a href="http://www.heidisql.com/" target="_blank">HeidiSQL (Windows)</a>, and
+                            <a href="http://dev.mysql.com/downloads/tools/workbench/" target="_blank">MySQL Workbench (Cross Platform)</a>.
+
+                            <br /><br />
+
+                            Connect using SSH tunnel, username <code>vagrant</code> and SSH key generated at
+                            <code>puphpet/files/dot/ssh/id_rsa</code>. This key is generated <strong>after</strong>
+                            your initial <code>$ vagrant up</code>!
+                        </p>
                     </div>
 
                     {% for database in mariadb.databases %}

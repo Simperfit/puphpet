@@ -5,5 +5,10 @@
 /app/logs/*
 /build/
 /vendor/
-/bin/
+/bin/*
+!/bin/librarian
 /composer.phar
+/Puppetfile.lock
+/.librarian
+/.tmp
+/modules

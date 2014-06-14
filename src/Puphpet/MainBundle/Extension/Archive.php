@@ -84,6 +84,30 @@ class Archive
     }
 
     /**
+     * Adds a folder to archive
+     *
+     * @param string $folder Source folder
+     * @param string $path   Path within archive
+     * @return $this
+     */
+    public function addFolder($folder, $path)
+    {
+        $parentPath = dirname($this->getTargetDir() . '/'. $path);
+
+        if (!is_dir($parentPath)) {
+            mkdir($parentPath, 0775, true);
+        }
+
+        $this->exec(sprintf(
+            'cp -r "%s" "%s"',
+            $folder,
+            $this->getTargetDir() . '/'. $path
+        ));
+
+        return $this;
+    }
+
+    /**
      * @return string
      */
     public function zip()
@@ -93,7 +117,7 @@ class Archive
 
         // ignore .git folders/files
         $exec = sprintf(
-            'cd "%s" && cd .. && zip -r "%s" "%s" -x */.git\*',
+            'cd "%s" && cd .. && zip -r "%s" "%s" -x */.git[!a]\*',
             $this->targetDir,
             $this->targetDir . '.zip',
             $folder

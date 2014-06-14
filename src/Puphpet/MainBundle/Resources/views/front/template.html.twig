@@ -39,6 +39,7 @@
             </div>
             <div class="navbar-collapse collapse" id="navbar-main">
                 <ul class="nav navbar-nav">
+                    <li><a href="http://blog.puphpet.com">Blog</a></li>
                     <li><a href="{{ path('puphpet.main.about') }}">About</a></li>
                     <li><a href="{{ path('puphpet.main.help') }}">Help!</a></li>
                 </ul>
@@ -53,6 +54,27 @@
         </div>
     </div>
 {% endblock %}
+
+<div class="jumbotron well-sm" id="slogan">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 hidden-md hidden-lg hidden-print">
+                <h1>PuPHPet</h1>
+                <p>A simple GUI to set up virtual machines for Web development.</p>
+            </div>
+            <div class="col-xs-6 col-md-2"><img src="/assets/v4/img/logo.png" id="logo" /></div>
+            <div class="col-md-6 hidden-xs hidden-sm">
+                <h1>PuPHPet</h1>
+                <p>A simple GUI to set up virtual machines for Web development.</p>
+            </div>
+            <div class="col-xs-6 col-md-4">
+                {% if not app.debug %}
+                    {% include 'PuphpetMainBundle:front:carbonAds.html.twig' %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
 
 {% block main %}
 {% endblock %}
@@ -88,7 +110,7 @@
                     Made with <span class="glyphicon glyphicon-heart"></span> by <a href="https://jtreminio.com">Juan Treminio</a>.
                     Contact him at <a href="mailto:jtreminio@gmail.com">jtreminio@gmail.com</a>.
                     Code licensed under the <a href="http://opensource.org/licenses/MIT">MIT License</a>.
-                    Bandwidth donated by: <a href="http://pressable.com" target="_blank"><img src="/assets/v4/img/pressable.png" width="200" /></a>
+                    Bandwidth donated by: <a href="http://rackspace.com" target="_blank"><img src="/assets/v4/img/rackspace-logo.png" width="200" /></a>
                 </p>
 
                 <h4>Made possible thanks to contributions by</h4>
@@ -116,6 +138,6 @@
             ga('send', 'pageview');
         </script>
     {% endif %}
+{% endblock footer %}
 </body>
 </html>
-{% endblock footer %}

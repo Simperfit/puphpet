@@ -18,7 +18,16 @@ vhosts:
             - APP_ENV dev
         override:
             - All
+        options:
+            - Indexes
+            - FollowSymLinks
+            - MultiViews
         custom_fragment: ~
+        ssl: 0
+        ssl_cert: ~
+        ssl_key: ~
+        ssl_chain: ~
+        ssl_certs_dir: ~
 
 mod_pagespeed: 0
 mod_spdy: 0

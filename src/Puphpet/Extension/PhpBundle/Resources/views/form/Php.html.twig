@@ -12,7 +12,9 @@
                 <div class="row install-checkbox-container">
                     <div class="col-xs-12">
                         <label class="checkbox-inline">
-                            <input class="install-checkbox" type="checkbox" name="php[install]"
+                            <input type="checkbox" class="install-checkbox update-other-input"
+                                   name="php[install]"
+                                   data-update-hhvm[install]="0"
                                    data-hide-on-uncheck="#php-config-container"
                                    {% if php.install %}checked{% endif %} value="1" />
                             Install PHP
@@ -46,10 +48,6 @@
                                     <input type="radio" name="php[version]" value="54"
                                         {% if php.version == '54' %}checked{% endif %} /> 5.4
                                 </label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="php[version]" value="53"
-                                        {% if php.version == '53' %}checked{% endif %} /> 5.3
-                                </label>
                             </div>
 
                             <div class="col-md-6">
@@ -62,6 +60,7 @@
                                 <label class="checkbox-inline">
                                     <input type="checkbox" name="php[composer]" value="1"
                                         {% if php.composer %}checked{% endif %} /> Install Composer
+                                    <input type="hidden" name="php[composer_home]" value="{{ php.composer_home }}" />
                                 </label>
                             </div>
                         </div>

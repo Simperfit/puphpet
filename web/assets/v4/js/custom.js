@@ -30,7 +30,13 @@ PUPHPET.updateOtherInput = function() {
 
             // If target element is not defined as #foo, maybe it is an input,name,value target
             if (!$target.length) {
-                $target = $('input[name="' + key + '"][value="'+ value +'"]')
+                var selector = 'input[name="' + key + '"]';
+
+                if (value.length) {
+                    selector = selector + '[value="'+ value +'"]'
+                }
+
+                $target = $(selector)
             }
 
             // If target is a radio element, check it, no need to uncheck in future
@@ -46,12 +52,14 @@ PUPHPET.updateOtherInput = function() {
              * If unchecked, do not update target. We only want to handle positive actions
              */
             if ($target.is(':checkbox') && $parent.is(':checked')) {
-                $target.prop('checked', true);
+                $target.prop('checked', false);
 
                 return;
             }
 
-            $target.val(value);
+            if (!$target.is(':radio') && !$target.is(':checkbox')) {
+                $target.val(value);
+            }
         });
     });
 };
@@ -462,7 +470,7 @@ PUPHPET.uploadConfig = function() {
 
         var form = $(
             '<form action="' + uploadConfigUrl + '" method="post">' +
-                '<input type="hidden" name="config" value="' + config + '" />' +
+                '<textarea style="display:none;" name="config">' + config + '</textarea>' +
             '</form>'
         );
         $('body').append(form);
@@ -477,7 +485,7 @@ PUPHPET.sidebar = function() {
     $('#nav-sidebar').affix({
         offset: {
             top: function () {
-                return $('#top').height();
+                return $('#top').height() + $('#slogan').height();
             },
             bottom: function () {
                 return $('footer').height() + 50;
@@ -580,7 +588,7 @@ PUPHPET.configureCollapseable = function() {
 };
 
 PUPHPET.hideOnNotInstalled = function () {
-    $('.install-checkbox').on('change',function () {
+    $(document).on('change', '.install-checkbox', function(e) {
         var target = this.getAttribute('data-hide-on-uncheck');
 
         if ($(this).is(':checked')) {

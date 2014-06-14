@@ -2,7 +2,7 @@ vm:
     provider:
         rackspace:
             server_name: rackspace-server
-            image: Debian 7 (Wheezy)
+            image: Wheezy
             region: dfw
             size: 1GB
             username: RACKSPACE_USERNAME
@@ -17,6 +17,7 @@ vm:
         puppet:
             manifests_path: "puphpet/puppet"
             manifest_file: "manifest.pp"
+            module_path: "puphpet/puppet/modules"
             options:
                 - "--verbose"
                 - "--hiera_config /vagrant/puphpet/puppet/hiera.yaml"

@@ -2,9 +2,6 @@
 {% set uniqid = uniqid('vvs_', true) %}
 
 <!-- vagrantfile-local / Shared Folders -->
-<input type="hidden" name="vagrantfile-local[vm][synced_folder][{{ uniqid }}][id]"
-       value="{% if synced_folder.id %}{{ synced_folder.id }}{% else %}{{ uniqid() }}{% endif %}" />
-
 <div id="{{ uniqid }}">
     <div class="panel-heading">
         <h3 class="panel-title">Sharing Folders with Local VM</h3>
@@ -19,7 +16,7 @@
                         <a href="http://docs.vagrantup.com/v2/synced-folders/index.html" target="_blank">more information</a>.
                         <strong>Windows users:</strong> You must use forward-slash
                         <code>c:/dev/vagrant/webroot</code> or double back-slash
-                        <code>c:\\dev\\vagrant\\webroot</code>')
+                        <code>c:\\\\dev\\\\vagrant\\\\webroot</code>')
                     }}
                 </label>
                 <input type="text" id="vagrantfile-local-vm-synced_folder-{{ uniqid }}-source"

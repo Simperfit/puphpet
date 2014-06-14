@@ -16,7 +16,7 @@
         "sensio/generator-bundle"               : "~2.3",
         "incenteev/composer-parameter-handler"  : "~2.0",
         "ircmaxell/random-lib"                  : "v1.0.0",
-        "zenstruck/slugify-bundle"              : "v1.1.1"
+        "cocur/slugify"                         : "~0.8"
     },
     "require-dev": {
         "phpunit/phpunit"                           : "~3.7",
@@ -28,14 +28,16 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "Puphpet\\MainBundle\\Composer\\PuppetModules::downloadPuppetDependencies"
         ],
         "post-update-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "Puphpet\\MainBundle\\Composer\\PuppetModules::downloadPuppetDependencies"
         ]
     },
     "config": {

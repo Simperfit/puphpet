@@ -62,6 +62,18 @@
                                 </label>
                             </div>
                         </div>
+
+                        <p class="help-block">
+                            The preferred way to connect to your database is using a dedicated application like
+                            <a href="http://www.valentina-db.com/valentina-studio-overview" target="_blank">Valentina Studio (OS X)</a> and
+                            <a href="http://www.pgadmin.org/" target="_blank">pgAdmin (Cross Platform)</a>.
+
+                            <br /><br />
+
+                            Connect using SSH tunnel, username <code>vagrant</code> and SSH key generated at
+                            <code>puphpet/files/dot/ssh/id_rsa</code>. This key is generated <strong>after</strong>
+                            your initial <code>$ vagrant up</code>!
+                        </p>
                     </div>
 
                     {% for database in postgresql.databases %}
